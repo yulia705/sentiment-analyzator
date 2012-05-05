@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sentiment Analyzator", "Sentiment Analyzator\Sentiment Analyzator.csproj", "{4C6824B4-7AC8-4321-963F-BCD8DA68D9EC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trainer", "Trainer\Trainer.csproj", "{FD1D20BE-83C3-4AB1-8D43-90017473B49C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4C6824B4-7AC8-4321-963F-BCD8DA68D9EC}.Debug|x86.ActiveCfg = Debug|x86
+		{4C6824B4-7AC8-4321-963F-BCD8DA68D9EC}.Debug|x86.Build.0 = Debug|x86
+		{4C6824B4-7AC8-4321-963F-BCD8DA68D9EC}.Release|x86.ActiveCfg = Release|x86
+		{4C6824B4-7AC8-4321-963F-BCD8DA68D9EC}.Release|x86.Build.0 = Release|x86
+		{FD1D20BE-83C3-4AB1-8D43-90017473B49C}.Debug|x86.ActiveCfg = Debug|x86
+		{FD1D20BE-83C3-4AB1-8D43-90017473B49C}.Debug|x86.Build.0 = Debug|x86
+		{FD1D20BE-83C3-4AB1-8D43-90017473B49C}.Release|x86.ActiveCfg = Release|x86
+		{FD1D20BE-83C3-4AB1-8D43-90017473B49C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
