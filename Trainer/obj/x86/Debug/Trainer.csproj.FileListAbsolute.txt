@@ -14,3 +14,11 @@ c:\Users\Алексей\Documents\Course_Work\Trainer\bin\Debug\HtmlAgilityPack.
 c:\Users\Алексей\Documents\Course_Work\Trainer\obj\x86\Debug\ResolveAssemblyReference.cache
 c:\Users\Алексей\Documents\Course_Work\Trainer\obj\x86\Debug\Trainer.exe
 c:\Users\Алексей\Documents\Course_Work\Trainer\obj\x86\Debug\Trainer.pdb
+C:\Users\skyrocker\Course Work\Trainer\bin\Debug\Trainer.exe
+C:\Users\skyrocker\Course Work\Trainer\bin\Debug\Trainer.pdb
+C:\Users\skyrocker\Course Work\Trainer\bin\Debug\HtmlAgilityPack.dll
+C:\Users\skyrocker\Course Work\Trainer\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\skyrocker\Course Work\Trainer\bin\Debug\HtmlAgilityPack.xml
+C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\Trainer.exe
+C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\Trainer.pdb
