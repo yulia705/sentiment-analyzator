@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<review>
+  <advantages> достоинств  впечатля результат тест  полн уделыва kingston 16 gb class 10  вот результат  ошеломля дл класс 6 sequential read   15 454 mb/ssequential write   14 507 mb/srandom read 512kb   15 325 mb/srandom write 512kb   3 487 mb/srandom read 4kb (qd=1)   4 142 mb/s  1011 3 iops]random write 4kb (qd=1)   0 029 mb/s  7 1 iops]random read 4kb (qd=32)   3 852 mb/s  940 5 iops]random write 4kb (qd=32)   0 036 mb/s  8 7 iops]test   50 mb [g  13 7% (2 0/14 9 gb)] (x5)date   2011/01/19 12 26 00os   windows 7 [6 1 build 7600] (x86)</advantages>
+  <grade>5</grade>
+</review>
