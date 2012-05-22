@@ -9,6 +9,16 @@ using System.IO;
 
 namespace Trainer
 {
+    class Correlation
+    {
+        public int count;
+        public string word;
+        public Correlation(int count, string word)
+        {
+            this.count = count;
+            this.word = word;
+        }
+    }
     class Trainer
     {
         static void Main(string[] args)
@@ -20,8 +30,8 @@ namespace Trainer
             //    Console.WriteLine(FilePath);
             //    GenerateXmlFromFile(FilePath);
             //}
-            //GenerateMatrixOfDocuments();
-            CalculateCorrelation();
+            GenerateMatrixOfDocuments();
+            //CalculateCorrelation();
         }
 
         private static void CalculateCorrelation()
@@ -68,11 +78,13 @@ namespace Trainer
             var wordsAdvantages = linesAdvantages.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
             var groupsAdvantages = wordsAdvantages.GroupBy(w => w);
             StreamWriter writerImportantWords = new StreamWriter("important.txt");
+            List<Correlation> correlations = new List<Correlation>(); ; ;
             foreach (var item in groupsAdvantages)
             {
                 if (item.Count() > 200)
                 {
-                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " positive");
+                    //writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " positive");
+                    correlations.Add(new Correlation(item.Count(), item.Key));
                 }
             }
 
@@ -84,10 +96,27 @@ namespace Trainer
             {
                 if (item.Count() > 25)
                 {
-                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " negative");
+                    //writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " negative");
+                    correlations.Add(new Correlation(item.Count(), item.Key));
                 }
             }
             writerImportantWords.Close();
+            for (int i = 0; i < correlations.Count; i++)
+            {
+                for (int j = i; j < correlations.Count; j++)
+                {
+                    if (correlations[i].word == correlations[j].word)
+                    {
+                        double correlation = (Convert.ToDouble(correlations[i].count) - Convert.ToDouble(correlations[j].count)) /Convert.ToDouble(correlations.Count);
+                        if (correlation != 0)
+                        {
+                            Console.WriteLine("{0:G9}", correlation);
+                        }
+                    }
+
+                }
+            }
+            Console.ReadLine();
         }
 
         private static void GenerateXmlFromFile(string fileName)
