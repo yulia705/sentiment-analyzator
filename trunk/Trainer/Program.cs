@@ -20,14 +20,19 @@ namespace Trainer
             //    Console.WriteLine(FilePath);
             //    GenerateXmlFromFile(FilePath);
             //}
-            GenerateMatrixOfDocuments();
-            Console.ReadLine();
+            //GenerateMatrixOfDocuments();
+            CalculateCorrelation();
         }
 
+        private static void CalculateCorrelation()
+        {
+            StreamReader reader = new StreamReader("important.txt");
+            string line = reader.ReadLine();
+        }
         private static void GenerateMatrixOfDocuments()
         {
             // Достаем текст из XML, выбираем самые часто встречающиеся в положительных и негативных
-            var xmlDoc = new XmlDocument();
+          /*  var xmlDoc = new XmlDocument();
             string[] filePaths = Directory.GetFiles(@"C:\Users\skyrocker\Course Work\Trainer\xml");
             foreach (string filePath in filePaths)
             {
@@ -46,13 +51,43 @@ namespace Trainer
                     fileDisadvantages.WriteLine(disadvantages[0].InnerText + "\n");
                     fileDisadvantages.Close();
                 }
-            }
+                if (grade.Count != 0 && comments.Count != 0)
+                {
+                    if (grade[0].InnerText == "1" || grade[0].InnerText == "2" || grade[0].InnerText == "3")
+                    {
+                        StreamWriter fileComments = new StreamWriter("disadvantages.txt", true);
+                        fileComments.WriteLine(comments[0].InnerText + "\n");
+                        fileComments.Close();
+                    }
+                }
+            }*/
 
             // Теперь подсчитаем число вхождений слов в файлы
+            StreamReader readerAdvantages = new StreamReader("advantages.txt");
+            var linesAdvantages = readerAdvantages.ReadToEnd();
+            var wordsAdvantages = linesAdvantages.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var groupsAdvantages = wordsAdvantages.GroupBy(w => w);
+            StreamWriter writerImportantWords = new StreamWriter("important.txt");
+            foreach (var item in groupsAdvantages)
+            {
+                if (item.Count() > 200)
+                {
+                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " positive");
+                }
+            }
 
-
-
-            
+            StreamReader readerDisadvantages = new StreamReader("disadvantages.txt");
+            var linesDisadvantages = readerDisadvantages.ReadToEnd();
+            var wordsDisadvantages = linesDisadvantages.Split(new[] { ' ', ',' }, StringSplitOptions.RemoveEmptyEntries);
+            var groupsDisadvantages = wordsDisadvantages.GroupBy(w => w);
+            foreach (var item in groupsDisadvantages)
+            {
+                if (item.Count() > 25)
+                {
+                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " negative");
+                }
+            }
+            writerImportantWords.Close();
         }
 
         private static void GenerateXmlFromFile(string fileName)
