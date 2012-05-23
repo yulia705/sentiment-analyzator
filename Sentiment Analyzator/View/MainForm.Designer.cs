@@ -34,7 +34,6 @@
             this.scContainer = new System.Windows.Forms.SplitContainer();
             this.rtbText = new System.Windows.Forms.RichTextBox();
             this.btnAnalyze = new System.Windows.Forms.Button();
-            this.btnTrain = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scContainer)).BeginInit();
             this.scContainer.Panel1.SuspendLayout();
@@ -63,7 +62,7 @@
             // openToolStripMenuItem
             // 
             this.openToolStripMenuItem.Name = "openToolStripMenuItem";
-            this.openToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
             this.openToolStripMenuItem.Text = "&Open";
             // 
             // scContainer
@@ -79,7 +78,6 @@
             // 
             // scContainer.Panel2
             // 
-            this.scContainer.Panel2.Controls.Add(this.btnTrain);
             this.scContainer.Panel2.Controls.Add(this.btnAnalyze);
             this.scContainer.Size = new System.Drawing.Size(833, 450);
             this.scContainer.SplitterDistance = 277;
@@ -103,15 +101,6 @@
             this.btnAnalyze.Text = "Analyze";
             this.btnAnalyze.UseVisualStyleBackColor = true;
             this.btnAnalyze.Click += new System.EventHandler(this.ClickTrainButton);
-            // 
-            // btnTrain
-            // 
-            this.btnTrain.Location = new System.Drawing.Point(123, 134);
-            this.btnTrain.Name = "btnTrain";
-            this.btnTrain.Size = new System.Drawing.Size(75, 23);
-            this.btnTrain.TabIndex = 1;
-            this.btnTrain.Text = "Train";
-            this.btnTrain.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -142,7 +131,6 @@
         private System.Windows.Forms.SplitContainer scContainer;
         private System.Windows.Forms.RichTextBox rtbText;
         private System.Windows.Forms.Button btnAnalyze;
-        private System.Windows.Forms.Button btnTrain;
     }
 }
 

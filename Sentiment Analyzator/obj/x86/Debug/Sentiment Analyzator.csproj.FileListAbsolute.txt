@@ -16,3 +16,8 @@ c:\Users\skyrocker\Course Work\Sentiment Analyzator\obj\x86\Debug\Sentiment_Anal
 c:\Users\skyrocker\Course Work\Sentiment Analyzator\obj\x86\Debug\Sentiment_Analyzator.Properties.Resources.resources
 c:\Users\skyrocker\Course Work\Sentiment Analyzator\obj\x86\Debug\GenerateResource.read.1.tlog
 c:\Users\skyrocker\Course Work\Sentiment Analyzator\obj\x86\Debug\GenerateResource.write.1.tlog
+c:\Users\skyrocker\Course Work\Sentiment Analyzator\bin\Debug\Trainer.exe
+c:\Users\skyrocker\Course Work\Sentiment Analyzator\bin\Debug\HtmlAgilityPack.dll
+c:\Users\skyrocker\Course Work\Sentiment Analyzator\bin\Debug\Trainer.pdb
+c:\Users\skyrocker\Course Work\Sentiment Analyzator\bin\Debug\HtmlAgilityPack.pdb
+c:\Users\skyrocker\Course Work\Sentiment Analyzator\bin\Debug\HtmlAgilityPack.xml
