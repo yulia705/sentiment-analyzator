@@ -41,6 +41,9 @@
     <Reference Include="IKVM.GNU.Classpath">
       <HintPath>.\IKVM.GNU.Classpath.dll</HintPath>
     </Reference>
+    <Reference Include="Independentsoft.Odf">
+      <HintPath>.\Independentsoft.Odf.dll</HintPath>
+    </Reference>
     <Reference Include="PDFBox-0.7.3">
       <HintPath>.\PDFBox-0.7.3.dll</HintPath>
     </Reference>
