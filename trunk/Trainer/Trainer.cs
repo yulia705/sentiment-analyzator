@@ -13,9 +13,22 @@ namespace Trainer
     {
         public int count;
         public string word;
-        public Correlation(int count, string word)
+        public bool isPositive;
+        public Correlation(int count, string word, bool isPositive)
         {
             this.count = count;
+            this.word = word;
+            this.isPositive = isPositive;
+        }
+    }
+
+    class WordCorrelation
+    {
+        public double correl;
+        public string word;
+        public WordCorrelation(double correl, string word)
+        {
+            this.correl = correl;
             this.word = word;
         }
     }
@@ -25,24 +38,18 @@ namespace Trainer
         {
             //Get file names
             string[] filePaths = Directory.GetFiles(@"C:\Users\skyrocker\Course Work\Trainer\reviews");
-            //foreach (var FilePath in filePaths)
-            //{
-            //    Console.WriteLine(FilePath);
-            //    GenerateXmlFromFile(FilePath);
-            //}
+            foreach (var FilePath in filePaths)
+            {
+                Console.WriteLine(FilePath);
+                GenerateXmlFromFile(FilePath);
+            }
             GenerateMatrixOfDocuments();
-            //CalculateCorrelation();
         }
 
-        private static void CalculateCorrelation()
-        {
-            StreamReader reader = new StreamReader("important.txt");
-            string line = reader.ReadLine();
-        }
         private static void GenerateMatrixOfDocuments()
         {
             // Достаем текст из XML, выбираем самые часто встречающиеся в положительных и негативных
-          /*  var xmlDoc = new XmlDocument();
+            var xmlDoc = new XmlDocument();
             string[] filePaths = Directory.GetFiles(@"C:\Users\skyrocker\Course Work\Trainer\xml");
             foreach (string filePath in filePaths)
             {
@@ -70,7 +77,7 @@ namespace Trainer
                         fileComments.Close();
                     }
                 }
-            }*/
+            }
 
             // Теперь подсчитаем число вхождений слов в файлы
             StreamReader readerAdvantages = new StreamReader("advantages.txt");
@@ -81,10 +88,9 @@ namespace Trainer
             List<Correlation> correlations = new List<Correlation>(); ; ;
             foreach (var item in groupsAdvantages)
             {
-                if (item.Count() > 200)
                 {
-                    //writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " positive");
-                    correlations.Add(new Correlation(item.Count(), item.Key));
+                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " positive");
+                    correlations.Add(new Correlation(item.Count(), item.Key, true));
                 }
             }
 
@@ -94,28 +100,52 @@ namespace Trainer
             var groupsDisadvantages = wordsDisadvantages.GroupBy(w => w);
             foreach (var item in groupsDisadvantages)
             {
-                if (item.Count() > 25)
+
                 {
-                    //writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " negative");
-                    correlations.Add(new Correlation(item.Count(), item.Key));
+                    writerImportantWords.WriteLine(item.Key + " " + item.Count().ToString() + " negative");
+                    correlations.Add(new Correlation(item.Count(), item.Key, false));
                 }
             }
             writerImportantWords.Close();
+            List<WordCorrelation> wordsCorrelations = new List<WordCorrelation>();
+            
             for (int i = 0; i < correlations.Count; i++)
             {
+                double correlation = 0;
+                bool isRepeatedWord = false;
                 for (int j = i; j < correlations.Count; j++)
                 {
                     if (correlations[i].word == correlations[j].word)
                     {
-                        double correlation = (Convert.ToDouble(correlations[i].count) - Convert.ToDouble(correlations[j].count)) /Convert.ToDouble(correlations.Count);
-                        if (correlation != 0)
-                        {
-                            Console.WriteLine("{0:G9}", correlation);
-                        }
+                        correlation = (Convert.ToDouble(correlations[i].count) - Convert.ToDouble(correlations[j].count)) /Convert.ToDouble(correlations.Count);
+                        isRepeatedWord = true;
                     }
 
                 }
+                if (isRepeatedWord)
+                {
+                    wordsCorrelations.Add(new WordCorrelation(correlation, correlations[i].word));
+                }
+                else
+                {
+                    if (correlations[i].isPositive)
+                    {
+                        correlation = (Convert.ToDouble(correlations[i].count)) / (Convert.ToDouble(correlations.Count));
+                    }
+                    else
+                    {
+                        correlation =  -(Convert.ToDouble(correlations[i].count) * 10) / (Convert.ToDouble(correlations.Count));
+                    }
+                    wordsCorrelations.Add(new WordCorrelation(correlation, correlations[i].word));
+                }
             }
+            StreamWriter correlationsWriter = new StreamWriter("correlations.txt");
+            foreach(var wordCorrelation in wordsCorrelations)
+            {
+                if(wordCorrelation.correl >= 0.01 || wordCorrelation.correl < 0 )
+                correlationsWriter.WriteLine(wordCorrelation.word + " " + wordCorrelation.correl);
+            }
+            correlationsWriter.Close();
             Console.ReadLine();
         }
 
