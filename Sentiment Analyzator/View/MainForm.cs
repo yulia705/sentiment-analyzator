@@ -30,5 +30,10 @@ namespace Sentiment_Analyzator
                 MessageBox.Show("Текст окрашен отрицательно");
             }
         }
+
+        private void ClickOpenMenu(object sender, EventArgs e)
+        {
+
+        }
     }
 }
