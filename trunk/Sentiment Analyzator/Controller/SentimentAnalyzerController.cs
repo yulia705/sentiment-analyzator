@@ -4,6 +4,11 @@ using System.Linq;
 using System.Text;
 using Trainer;
 using System.IO;
+using Microsoft.Office.Interop.Word;
+using System.Windows.Forms;
+using org.pdfbox.pdmodel;
+using org.pdfbox.util;
+//using Independentsoft.Odf;
 
 namespace Sentiment_Analyzator.Controller
 {
@@ -45,11 +50,62 @@ namespace Sentiment_Analyzator.Controller
             }
             double pFraction = Math.Exp(logOfP) ;
             double result = pFraction/(pFraction + 1);
-            if (result > 0.7)
+            if (result > 0.5)
             {
                 return 1;
             }
             return 0;
+        }
+
+        public string GetTextFromFile(string fileName)
+        {
+            var format = Path.GetExtension(fileName);
+            string result = String.Empty;
+            switch (format)
+            {
+                case ".doc":
+                    result = GetTextFromDocFile(fileName); break;
+                case ".docx": 
+                    result = GetTextFromDocFile(fileName); break;
+                case ".pdf": 
+                    result = GetTextFromPdfFile(fileName);break;
+                case ".odt": 
+                    result = GetTextFromOdtFile(fileName);break;
+                case ".txt": break;
+            }
+            return result;
+        }
+
+        private string GetTextFromDocFile(string fileName)
+        {
+            string result = String.Empty;
+            Microsoft.Office.Interop.Word.Application wordObject;
+            wordObject = new Microsoft.Office.Interop.Word.Application();
+            object file = fileName; //this is the path
+            object nullobject = System.Reflection.Missing.Value;
+            Microsoft.Office.Interop.Word.Document docs = wordObject.Documents.Open
+                (ref file, ref nullobject, ref nullobject, ref nullobject,
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject,
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject,
+                ref nullobject, ref nullobject, ref nullobject, ref nullobject
+                                );
+            docs.ActiveWindow.Selection.WholeStory();
+            docs.ActiveWindow.Selection.Copy();
+            IDataObject data = Clipboard.GetDataObject();
+            result = data.GetData(DataFormats.Text).ToString();
+            docs.Close(ref nullobject, ref nullobject, ref nullobject);
+            return result;
+        }
+        private string GetTextFromPdfFile(string fileName)
+        {
+            PDDocument doc = PDDocument.load(fileName);
+            PDFTextStripper stripper = new PDFTextStripper();
+            return stripper.getText(doc);
+        }
+        private string GetTextFromOdtFile(string fileName)
+        {
+            //TextDocument odtDoc = new TextDocument(fileName);
+            return String.Empty;//odtDoc.ToString();
         }
     }
 }
