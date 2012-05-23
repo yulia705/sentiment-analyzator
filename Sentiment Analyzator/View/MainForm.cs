@@ -33,7 +33,15 @@ namespace Sentiment_Analyzator
 
         private void ClickOpenMenu(object sender, EventArgs e)
         {
-
+            OpenFileDialog ofdDialog = new OpenFileDialog();
+            ofdDialog.Title = "Open text file";
+            if (ofdDialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                string fileName = ofdDialog.FileName;
+                SentimentAnalyzerController controller = new SentimentAnalyzerController();
+                string textFromFile = controller.GetTextFromFile(fileName);
+                rtbText.Text = textFromFile;
+            }
         }
     }
 }
