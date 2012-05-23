@@ -22,3 +22,11 @@ C:\Users\skyrocker\Course Work\Trainer\bin\Debug\HtmlAgilityPack.xml
 C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\ResolveAssemblyReference.cache
 C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\Trainer.exe
 C:\Users\skyrocker\Course Work\Trainer\obj\x86\Debug\Trainer.pdb
+c:\Users\Алексей\Documents\new course work!\Trainer\bin\Debug\Trainer.exe
+c:\Users\Алексей\Documents\new course work!\Trainer\bin\Debug\Trainer.pdb
+c:\Users\Алексей\Documents\new course work!\Trainer\bin\Debug\HtmlAgilityPack.dll
+c:\Users\Алексей\Documents\new course work!\Trainer\bin\Debug\HtmlAgilityPack.pdb
+c:\Users\Алексей\Documents\new course work!\Trainer\bin\Debug\HtmlAgilityPack.xml
+c:\Users\Алексей\Documents\new course work!\Trainer\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\Users\Алексей\Documents\new course work!\Trainer\obj\x86\Debug\Trainer.exe
+c:\Users\Алексей\Documents\new course work!\Trainer\obj\x86\Debug\Trainer.pdb

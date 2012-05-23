@@ -8,7 +8,7 @@ using Microsoft.Office.Interop.Word;
 using System.Windows.Forms;
 using org.pdfbox.pdmodel;
 using org.pdfbox.util;
-//using Independentsoft.Odf;
+using Independentsoft.Odf;
 
 namespace Sentiment_Analyzator.Controller
 {
@@ -71,7 +71,8 @@ namespace Sentiment_Analyzator.Controller
                     result = GetTextFromPdfFile(fileName);break;
                 case ".odt": 
                     result = GetTextFromOdtFile(fileName);break;
-                case ".txt": break;
+                case ".txt": 
+                    result = GetTextFromTxtFile(fileName); break;
             }
             return result;
         }
@@ -104,8 +105,12 @@ namespace Sentiment_Analyzator.Controller
         }
         private string GetTextFromOdtFile(string fileName)
         {
-            //TextDocument odtDoc = new TextDocument(fileName);
-            return String.Empty;//odtDoc.ToString();
+            TextDocument odtDoc = new TextDocument(fileName);
+            return odtDoc.ToText();
+        }
+        private string GetTextFromTxtFile(string fileName)
+        {
+            return System.IO.File.ReadAllText(fileName);
         }
     }
 }
